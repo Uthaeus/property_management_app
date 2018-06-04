@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 
-export default class App extends Component {
+class Header extends Component {
   render() {
     return (
       <div>
-        <h1>DevCamp React Starter</h1>
+        <h1>Header</h1>
+        {this.props.children}
       </div>
     );
   }
 }
+
+export default Header;
