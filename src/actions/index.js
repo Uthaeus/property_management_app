@@ -10,7 +10,7 @@ export function signinUser({email, password}) {
     .then(response => {
       console.log(response.data.token);
 
-      history.pushState('./newsletter');
+      history.push('./newsletter');
     })
     .catch(error => {
 
