@@ -1,3 +1,5 @@
+import { FETCH_NEWSLETTER_ARCHIVE } from './types';
+
 import axios from 'axios';
 import histroy from '.../history';
 
@@ -16,5 +18,19 @@ export function signinUser({email, password}) {
     .catch(error => {
 
     })
+  }
+}
+
+export function fetchNewsletterArchive() {
+  return function(dispatch) {
+    axios.get(`${ROOT_URL}/newsletterArchive`, {
+      headers: { authorization: localStorage.getItem('token') }
+    })
+      .then(response => {
+        dispatch({
+          type: FETCH_NEWSLETTER_ARCHIVE,
+          payload: response.data 
+        })
+      })
   }
 }
