@@ -1,4 +1,7 @@
-import { FETCH_NEWSLETTER_ARCHIVE } from "../actions/types";
+import { 
+  FETCH_NEWSLETTER_ARCHIVE,
+  FETCH_NEWSLETTER_BY_ID
+} from "../actions/types";
 
 
 export default function(state = {}, action) {
@@ -11,6 +14,18 @@ export default function(state = {}, action) {
         ...state, 
         archive, 
         latestItem
+      }
+
+    case FETCH_NEWSLETTER_BY_ID:
+      var fetchedItem = {};
+      state.archive.find((object, index) => {
+        if (object._id == action.payload) {
+          fetchedItem = object;
+        }
+      })
+      return {
+        ...state,
+        fetchedItem
       }
     default: return state;
   }
