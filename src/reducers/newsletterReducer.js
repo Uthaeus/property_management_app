@@ -17,10 +17,10 @@ export default function(state = {}, action) {
       }
 
     case FETCH_NEWSLETTER_BY_ID:
-      var fetchedItem = {};
-      state.archive.find((object, index) => {
-        if (object._id == action.payload) {
-          fetchedItem = object;
+      
+      const fetchedItem = state.archive.find( newsletterItem => {
+        if (newsletterItem._id == action.payload) {
+          return newsletterItem;
         }
       })
       return {

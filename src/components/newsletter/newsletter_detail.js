@@ -5,8 +5,9 @@ import * as actions from '../../actions';
 
 class NewsletterDetail extends Component {
   componentDidMount() {
-    this.props.fetchItemById()
+    this.props.fetchNewsletterById(this.props.match.params._id)
   }
+
   render() {
     return (
       <div>
@@ -18,7 +19,7 @@ class NewsletterDetail extends Component {
 
 function mapStateToProps(state) {
   return {
-    fetchedItem: state.fetchedItem
+    fetchedItem: state.newsletter.fetchedItem
   }
 }
 
