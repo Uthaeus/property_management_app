@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
 import NewsletterArchive from './newsletter_archive';
+import NewsletterContent from './newsletter_content';
 
 class Newsletter extends Component {
 
@@ -14,15 +15,17 @@ class Newsletter extends Component {
 
   render() {
     return (
-      <div>
-        <div>
-          <div>
+      <div className="row">
+        <div className="col-md-3">
+          <div className="col-md-2" style={{width: '200px', height: '200px', backgroundColor: 'skyblue'}}>
             02 jan 18
           </div>
-          <NewsletterArchive archive={this.props.archive} />
+          <div className="col-md-10">
+            <NewsletterArchive archive={this.props.archive} />
+          </div>
         </div>
-        <div>
-          main content. the latest newsletter 
+        <div className="col-md-9">
+          <NewsletterContent latestItem={this.props.latestItem}  />
         </div>
       </div>
     )
@@ -30,7 +33,11 @@ class Newsletter extends Component {
 }
 
 function mapStateToProps(state) {
-  return { archive: state.newsletter.archive }
+
+  return { 
+    archive: state.newsletter.archive,
+    latestItem: state.newsletter.latestItem 
+  }
 }
 
 export default connect(mapStateToProps, actions)(Newsletter);

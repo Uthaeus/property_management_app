@@ -1,7 +1,7 @@
 import { FETCH_NEWSLETTER_ARCHIVE } from './types';
 
 import axios from 'axios';
-import histroy from '.../history';
+import histroy from '../history';
 
 const ROOT_URL = 'https://bottega-property-management.herokuapp.com';
 
