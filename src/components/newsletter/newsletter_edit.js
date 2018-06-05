@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Field, reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
+import * as actions from '../../actions';
 
 class EditNewsletter extends Component {
   renderInput(field) {
     return <input className="formControl" {...field.input} type="field.type" />
   }
 
-  handleFormSubmit(email, password) {
+  handleFormSubmit(title, body) {
     
   }
   render() {
@@ -28,7 +30,12 @@ class EditNewsletter extends Component {
   }
 }
 
-EditNewsletter = reduxform({form: "editNewsletter"})(EditNewsletter)
+function mapStateToProps(state) {
+  return { state }
+}
+
+EditNewsletter = reduxForm({form: "editNewsletter"})(EditNewsletter)
 
 
-export default EditNewsletter;
+
+export default connect(mapStateToProps, actions)(EditNewsletter);
