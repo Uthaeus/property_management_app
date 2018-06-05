@@ -23,6 +23,10 @@ export default function(state = INITIAL_STATE, action) {
       }
 
     case FETCH_NEWSLETTER_BY_ID:
+
+      if (state.latestItem._id == action.payload) {
+        return { ...state, fetchedItem: state.latestItem }
+      }
       
       const fetchedItem = state.archive.find( newsletterItem => {
         if (newsletterItem._id == action.payload) {
