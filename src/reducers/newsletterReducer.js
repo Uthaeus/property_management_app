@@ -3,8 +3,14 @@ import {
   FETCH_NEWSLETTER_BY_ID
 } from "../actions/types";
 
+const INITIAL_STATE = {
+  archive: [],
+  latestItem: {},
+  fetchedItem: {}
+}
 
-export default function(state = {}, action) {
+
+export default function(state = INITIAL_STATE, action) {
   switch(action.type) {
     case FETCH_NEWSLETTER_ARCHIVE:
       const latestItem = action.payload[0];
