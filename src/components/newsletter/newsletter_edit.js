@@ -8,6 +8,7 @@ class EditNewsletter extends Component {
 
   componentDidMount() {
     this.props.fetchNewsletterById(this.props.match.params._id)
+    
   }
 
   renderInput(field) {
@@ -20,7 +21,10 @@ class EditNewsletter extends Component {
   }
 
   handleFormSubmit(title, body) {
-    this.props.saveNewsletterEdit({title, body}, this.props.match.params._id)
+    this.props.saveNewsletterEdit({title, body}, this.props.match.params._id, () => {
+      this.props.history.push('/newsletter');
+    })
+    
   }
   render() {
 
